@@ -117,8 +117,30 @@ header {
 }
 
 .hero-content {
-  max-width: 850px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
 }
+
+.hero-text {
+  flex: 1;
+}
+
+.hero-photo {
+  width: 320px;
+  height: 320px;
+  flex-shrink: 0;
+}
+
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
 
 .availability {
   display: inline-flex;
@@ -605,17 +627,87 @@ footer {
 
 
 @media (max-width: 850px) {
-  .nav-links {
-    display: none;
+  .container {
+    width: 92%;
   }
 
-  .about-grid
-  .skills-grid {
+  /* Keep navigation visible */
+  header {
+    height: auto;
+    min-height: 64px;
+  }
+
+  .nav {
+    height: auto;
+    min-height: 64px;
+    padding: 10px 0;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  .nav-links a {
+    font-size: 12px;
+    padding: 7px 9px;
+  }
+
+  /* Stack photo above text */
+  .hero {
+    padding-top: 100px;
+    padding-bottom: 60px;
+  }
+
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .hero-photo {
+    order: -1;
+    width: 230px;
+    height: 230px;
+    max-width: 70%;
+  }
+
+  .hero-text {
+    width: 100%;
+  }
+
+  .hero h1 {
+    font-size: 60px;
+    letter-spacing: -3px;
+    max-width: 100%;
+  }
+
+  .hero-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-orb {
+    width: 300px;
+    height: 300px;
+    right: -150px;
+    opacity: 0.5;
+  }
+
+  /* Fix grid layouts */
+  .about-grid, .skills-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
 
   .interest-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .education-card {
@@ -626,56 +718,172 @@ footer {
     text-align: left;
   }
 
-  .hero-orb {
-    opacity: 0.5;
-    right: -250px;
+  .section {
+    padding: 80px 0;
   }
 }
 
 @media (max-width: 600px) {
   .container {
-    width: 92%;
+    width: 90%;
+  }
+  .nav {
+    justify-content: flex-start;
+    overflow-x: auto;
   }
 
-  .section {
-    padding: 80px 0;
+  .nav-links {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 2px;
+    width: max-content;
+    min-width: 100%;
+  }
+
+  .nav-links a {
+    flex-shrink: 0;
+    font-size: 12px;
+    padding: 7px 9px;
+  }
+
+  /* Photo at the top, text below */
+  .hero {
+    min-height: auto;
+    padding-top: 105px;
+    padding-bottom: 70px;
+  }
+
+  .hero-content {
+    gap: 25px;
+  }
+
+  .hero-photo {
+    width: 180px;
+    height: 180px;
+    max-width: 65%;
+    flex-shrink: 0;
   }
 
   .hero h1 {
-    font-size: 52px;
+    font-size: 43px;
+    line-height: 1.08;
     letter-spacing: -2px;
+    margin-bottom: 20px;
   }
 
   .hero-description {
     font-size: 15px;
+    margin-bottom: 25px;
   }
 
-  .stats {
-    grid-template-columns: 1fr 1fr;
+  .hero-actions {
+    gap: 10px;
+  }
+
+  .btn {
+    padding: 11px 14px;
+    font-size: 13px;
+  }
+
+  .section {
+    padding: 65px 0;
+  }
+
+  .section-title {
+    font-size: 36px;
+    letter-spacing: -1px;
+  }
+
+  .section-description {
+    font-size: 14px;
+  }
+
+  .about-text {
+    font-size: 15px;
+  }
+
+  .projects {
+    gap: 16px;
+    margin-top: 35px;
   }
 
   .project {
-    padding: 23px;
+    padding: 20px;
+    border-radius: 15px;
+  }
+
+  .project h3 {
+    font-size: 21px;
+  }
+
+  .project-description {
+    font-size: 14px;
   }
 
   .project-features {
     grid-template-columns: 1fr;
+    gap: 8px;
   }
 
-  .project h3 {
-    font-size: 22px;
+  .skills-grid {
+    grid-template-columns: 1fr;
+    margin-top: 35px;
+  }
+
+  .skill-group {
+    padding: 20px;
+  }
+
+  .interest-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .education-card {
+    padding: 24px;
+  }
+
+  .education-card h3 {
+    font-size: 21px;
   }
 
   .experience-wrapper {
-    padding-left: 25px;
+    padding-left: 18px;
+  }
+
+  .experience h3 {
+    font-size: 22px;
+  }
+
+  .contact {
+    padding-bottom: 75px;
   }
 
   .footer-content {
     flex-direction: column;
     text-align: center;
   }
+}
+
+@media (max-width: 360px) {
+  .hero-photo {
+    width: 150px;
+    height: 150px;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+  }
+
+  .nav-links a {
+    font-size: 11px;
+    padding: 6px 7px;
+  }
+
+  .btn {
+    padding: 10px 11px;
+  }
 
   .section-title {
-    font-size: 38px;
+    font-size: 32px;
   }
 }
